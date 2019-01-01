@@ -8,4 +8,6 @@ public interface UserService {
     public int add(User user);
 
     public List<User>getAll();
+
+    public int addAccount();
 }

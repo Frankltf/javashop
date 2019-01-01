@@ -39,4 +39,18 @@ public class UserController {
         List<User> users=userService.getAll();
         return users;
     }
+
+    @GetMapping("addaccount")
+    public Object addAcount(){
+        try {
+            int id=userService.addAccount();
+            return id;
+        }catch (Exception e){
+            System.out.println("aa");
+            return 0;
+        }finally {
+            return 1;
+        }
+
+    }
 }
