@@ -4,6 +4,7 @@ import com.ltf.shop.domain.User;
 import com.ltf.shop.service.UserService;
 import com.ltf.shop.task.AsyncTask;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +21,9 @@ public class UserController {
 
     @Autowired
     private AsyncTask asyncTask;
+
+    @Value("${test.url}")
+    private String env;
 
     /**
      * 功能描述: user 保存接口
@@ -75,5 +79,11 @@ public class UserController {
         }
         System.out.println("主任务耗时："+(end-begin));
         return  total;
+    }
+
+    @GetMapping("testenv")
+    public Object testenv(){
+        String field=this.env;
+        return  field;
     }
 }
