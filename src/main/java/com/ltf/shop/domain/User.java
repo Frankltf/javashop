@@ -1,4 +1,4 @@
-package net.xdclass.base_project.domain;
+package com.ltf.shop.domain;
 
 import java.util.Date;
 
