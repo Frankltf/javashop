@@ -1,8 +1,9 @@
-package com.ltf.shop.domain;
+package net.xdclass.base_project.domain;
 
 import java.util.Date;
 
 public class User {
+
     private int id;
 
     private String name;
@@ -52,4 +53,8 @@ public class User {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+
+
+
 }
