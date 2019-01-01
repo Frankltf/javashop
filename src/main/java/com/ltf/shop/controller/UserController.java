@@ -2,12 +2,14 @@ package com.ltf.shop.controller;
 
 import com.ltf.shop.domain.User;
 import com.ltf.shop.service.UserService;
+import com.ltf.shop.task.AsyncTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Future;
 
 @RestController
 public class UserController {
@@ -15,6 +17,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AsyncTask asyncTask;
 
     /**
      * 功能描述: user 保存接口
@@ -51,6 +56,24 @@ public class UserController {
         }finally {
             return 1;
         }
+    }
 
+
+    @GetMapping("aysnctask")
+    public Object aysnctask() throws InterruptedException {
+        long begin=System.currentTimeMillis();
+        Future<String> task1=asyncTask.task1();
+        Future<String> task2=asyncTask.task2();
+        Future<String> task3=asyncTask.task3();
+        long end=System.currentTimeMillis();
+        long total=end-begin;
+
+        for (;;){
+            if(task1.isDone() && task2.isDone() && task3.isDone()){
+                break;
+            }
+        }
+        System.out.println("主任务耗时："+(end-begin));
+        return  total;
     }
 }
