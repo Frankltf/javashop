@@ -4,6 +4,7 @@ import com.ltf.shop.domain.User;
 import com.ltf.shop.mapper.UserMapper;
 import com.ltf.shop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,5 +42,12 @@ public class UserServiceImpl implements UserService {
         int id=userMapper.insert(user);
         int i=3/0;
         return id;
+    }
+
+
+    @EventListener
+    public void listentest(User user)
+    {
+        System.out.println("lintener");
     }
 }

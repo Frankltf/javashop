@@ -5,6 +5,7 @@ import com.ltf.shop.service.UserService;
 import com.ltf.shop.task.AsyncTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +22,9 @@ public class UserController {
 
     @Autowired
     private AsyncTask asyncTask;
+
+    @Autowired
+    private ApplicationEventPublisher applicationEventPublisher;
 
     @Value("${test.url}")
     private String env;
@@ -85,5 +89,13 @@ public class UserController {
     public Object testenv(){
         String field=this.env;
         return  field;
+    }
+
+    @GetMapping("eventtest")
+    public Object Eventtest()
+    {
+        User user=new User();
+        applicationEventPublisher.publishEvent(user);
+        return  0;
     }
 }
