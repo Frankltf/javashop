@@ -1,23 +1,33 @@
 package com.ltf.shop.domain;
 
+import java.util.Date;
+
 public class User {
-    private int age;
-    private String pwd;
+
+    private int id;
+
+    private String name;
+
     private String phone;
-    public int getAge() {
-        return age;
+
+    private int age;
+
+    private Date createTime;
+
+    public int getId() {
+        return id;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getPwd() {
-        return pwd;
+    public String getName() {
+        return name;
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhone() {
@@ -27,4 +37,24 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+
+
+
 }
